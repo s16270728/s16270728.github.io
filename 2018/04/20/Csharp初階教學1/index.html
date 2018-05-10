@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-TW">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C#,.NET,新手教學," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本教學以C#基礎語法教學為主搭配VS2017開發環境。 以下皆以console程式作範例，主要內容來自MSDN 控制台應用程式（console application）是一種設計用於純文字電腦介面的電腦程式">
+<meta name="keywords" content="C#,.NET,新手教學">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#初階教學">
+<meta property="og:url" content="http://www.xdmtech.com/2018/04/20/Csharp初階教學1/index.html">
+<meta property="og:site_name" content="XDM KM">
+<meta property="og:description" content="本教學以C#基礎語法教學為主搭配VS2017開發環境。 以下皆以console程式作範例，主要內容來自MSDN 控制台應用程式（console application）是一種設計用於純文字電腦介面的電腦程式">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/20/Csharp初階教學1/VisualStudioInstall.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/20/Csharp初階教學1/VsProjectSelect.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/20/Csharp初階教學1/helloworld.png">
+<meta property="og:updated_time" content="2018-05-02T03:27:03.183Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C#初階教學">
+<meta name="twitter:description" content="本教學以C#基礎語法教學為主搭配VS2017開發環境。 以下皆以console程式作範例，主要內容來自MSDN 控制台應用程式（console application）是一種設計用於純文字電腦介面的電腦程式">
+<meta name="twitter:image" content="http://www.xdmtech.com/2018/04/20/Csharp初階教學1/VisualStudioInstall.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.xdmtech.com/2018/04/20/Csharp初階教學1/"/>
+
+
+
+
+
+  <title>C#初階教學 | XDM KM</title>
+  
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="/js/src/highlightJs/styles/vs2015.css">
+  <script type="text/javascript" src="/js/src/highlightJs/highlight.pack.js"></script>
+</head>
+<style>
+  pre {
+    position: relative;
+    padding: 0;
+  }
+
+  code.has-numbering {
+    margin-left: 2.5rem;
+  }
+
+  code.has-numbering::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pre-numbering {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .pre-numbering li {
+    list-style-type: decimal-leading-zero !important;
+  }
+
+  @media (max-width: 760px) {
+    .post-body pre {
+      padding: 0px;
+    }
+
+    .post-body .pre-numbering {
+      display: none;
+    }
+
+    code.has-numbering {
+      margin: 0;
+    }
+  }
+
+</style>
+<style>
+blockquote {
+  color: #888;
+  background-color: #eae6f3;
+  border-left: 1rem solid #5236a0;
+  padding: 0 1.5rem;
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+}
+
+blockquote:before,
+blockquote:after {
+  color: #392570;
+  font-size: 2.5rem;
+  position: absolute;
+  line-height: 2.5rem;
+}
+
+blockquote:before {
+  content: "\201C";
+  left: -1rem;
+  top: 0;
+}
+
+blockquote:after {
+  content: "\201D";
+  right: 0;
+  bottom: -1rem;
+}
+</style>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-TW">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XDM KM</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.xdmtech.com/2018/04/20/Csharp初階教學1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XDM">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XDM KM">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C#初階教學</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-20T13:38:34+08:00">
+                2018-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程式開發教學/" itemprop="url" rel="index">
+                    <span itemprop="name">程式開發教學</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程式開發教學/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C#</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本教學以C#基礎語法教學為主搭配VS2017開發環境。</p>
+<p>以下皆以console程式作範例，主要內容來自MSDN</p>
+<p>控制台應用程式（console application）是一種設計用於純文字電腦介面的電腦程式</p>
+<a id="more"></a>
+<h1 id="C-簡介"><a href="#C-簡介" class="headerlink" title="C#簡介"></a>C#簡介</h1><h1 id="準備開發環境"><a href="#準備開發環境" class="headerlink" title="準備開發環境"></a>準備開發環境</h1><h2 id="安裝Visual-Studio"><a href="#安裝Visual-Studio" class="headerlink" title="安裝Visual Studio"></a>安裝Visual Studio</h2><p>安裝<a href="https://www.visualstudio.com/" target="_blank" rel="noopener">VisualStudio</a>，Community 2017 版本即可</p>
+<p>並且選擇要開發的項目來選擇安裝，全選會需要非常多的空間，沒有必要，基本上選擇<strong>.NET桌面開發</strong>、<strong>ASP.NET網頁開發</strong>(有要開發網頁的話)、<strong>資料儲存與處理</strong>、其他再視個人需求勾選。</p>
+<p><img src="VisualStudioInstall.png" alt="VS安裝畫面"></p>
+<h2 id="開啟你的第一個專案-Hello-World"><a href="#開啟你的第一個專案-Hello-World" class="headerlink" title="開啟你的第一個專案 Hello World"></a>開啟你的第一個專案 Hello World</h2><p>開啟VS2017後左上角選單選擇 <strong>檔案</strong> -&gt; <strong>新增</strong> -&gt; <strong>專案</strong>，在專案選擇畫面左邊為Visual C#類別，右邊選擇<strong>主控台應用程式(.NET Framework)</strong>，下方為你的專案取個名字選擇存放資料夾按下確定</p>
+<p><img src="VsProjectSelect.png" alt="選擇專案"></p>
+<p>建立專案後右側為<strong>方案總管</strong>，是負責設定程式參數以及管理程式碼和參考的地方</p>
+<p>在Program.cs的Main裡面寫上Hello world看看執行結果</p>
+<pre><code class="cs">    static void Main(string[] args)
+    {
+        Console.WriteLine(&quot;Hello World&quot;);
+        Console.ReadLine(); //Pause
+    }
+</code></pre>
+<p><img src="helloworld.png" alt="HelloWorld"></p>
+<p>===========</p>
+<h1 id="程式結構"><a href="#程式結構" class="headerlink" title="程式結構"></a>程式結構</h1><p>C# 程式包含一個或多個原始程式檔。 程式宣告型別，其中包含成員並可以依據命名空間分組。 類別和介面都是型別的範例。 欄位、方法、屬性及事件都是成員的範例。</p>
+<p>在VS中每一個方案(solution)可以包含許多專案(project)，每一個專案包含許多的程式碼檔案以及資源，一個專案編譯完成為一個組件，組件基本為執行檔(exe)或程式庫(dll)。</p>
+<p>通常較為大型的程式會由一個exe與許多dll組成，我們將軟體架構拆分為許多的dll再交由exe統整應用。</p>
+<p>C# 語言的重要組織概念如下：程式、命名空間、型別、成員及組件。 C# 程式包含一個或多個原始程式檔。 程式宣告型別，其中包含成員並可以依據命名空間分組。 類別和介面都是型別的範例。 欄位、方法、屬性及事件都是成員的範例。</p>
+<pre><code class="cs">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+//參考 Reference
+
+namespace ConsoleApp1 //命名空間 namespace 
+{
+    class Program //型別 class and interface
+    {
+        string _userName; //屬性 Property
+
+        public Program() //建構式 constructor
+        {
+
+        }
+
+        static void Main(string[] args) //方法 method
+        {
+            Console.WriteLine(&quot;Hello World&quot;);
+            Console.ReadLine();
+        }
+    }
+}
+</code></pre>
+<ul>
+<li><p><strong>參考:</strong> 程式參考哪些組件、類別</p>
+</li>
+<li><p><strong>命名空間:</strong> 型別存在的命名空間，用來類別分組使用，ConsoleApp1.Program為範例類別完整名稱</p>
+</li>
+<li><p><strong>型別:</strong> 宣告程式型別的類型，通常為類別(class)或介面(interface)</p>
+</li>
+<li><p><strong>屬性:</strong> 為類別成員的一種，屬性是提供彈性機制以讀取、寫入或計算私用欄位值的成員</p>
+</li>
+<li><p><strong>建構式:</strong> 每當建立類別或結構時，都會呼叫其建構函式。 類別或結構可有使用不同引數的多個建構函式。</p>
+</li>
+<li><p><strong>方法:</strong> 方法是包含一系列陳述式的程式碼區塊。 程式會造成呼叫方法並指定任何所需的方法引數來執行陳述式。</p>
+</li>
+</ul>
+<p>==============</p>
+<h1 id="類型與變數"><a href="#類型與變數" class="headerlink" title="類型與變數"></a>類型與變數</h1><p>跳過</p>
+<p>==============</p>
+<h1 id="運算式"><a href="#運算式" class="headerlink" title="運算式"></a>運算式</h1><p>「運算式」是由「運算元」和「運算子」建構而成。 運算式的運算子會指出要將哪些運算套用到運算元。 運算子範例包括 +、-、*、/ 及 new。 運算元範例包括常值、欄位、區域變數及運算式。</p>
+<ul>
+<li>除了指派運算子之外，所有二元運算子都具有「左關聯性」，亦即會由左到右執行運算。 例如，x + y + z 會判斷值為 (x + y) + z。</li>
+<li>指派運算子和條件運算子 (?:) 具有「右關聯性」，亦即會由右到左執行運算。 例如，x = y = z 會判斷值為 x = (y = z)。</li>
+</ul>
+<pre><code class="cs">    Console.WriteLine($&quot;1 + 2 = { 1 + 2 }&quot;); //加法
+    Console.WriteLine($&quot;2 - 1 = { 2 - 1 }&quot;); //減法
+    Console.WriteLine($&quot;2 * 3 = { 2 * 3 }&quot;); //乘法
+    Console.WriteLine($&quot;4 / 2 = { 4 / 2 }&quot;); //除法
+    Console.WriteLine($&quot;4 % 2 = { 4 % 2 }&quot;); //餘數
+    Console.WriteLine();
+    Console.WriteLine($&quot;1 + 2 = { 1 + 2 }&quot;); //二元運算子順序從左到右
+    Console.WriteLine($&quot;1 + 2 * 3= { 1 + 2 * 3}&quot;); //* 運算子的優序高於 +
+    Console.WriteLine();
+    var x = 1; var y = 2; var z = 3;
+    Console.WriteLine($&quot;x=1, y=2, z=3    x = y = z =&gt;{x = y = z}&quot; //指子從右到左
+    Console.WriteLine();
+    x = 1; y = 2; z = 2;
+    Console.WriteLine(&quot;關係和型別測試&quot;);
+    Console.WriteLine(&quot;x = 1; y = 2; z = 2&quot;);
+    Console.WriteLine($&quot;x &gt; y =&gt;{x &gt; y}&quot;); //大於
+    Console.WriteLine($&quot;x &lt; y =&gt;{x &lt; y}&quot;); //小於
+    Console.WriteLine($&quot;y &gt;= x =&gt;{y &gt;= x}&quot;); //大於等於
+    Console.WriteLine($&quot;y &lt;= z =&gt;{y &lt;= z}&quot;); //小於等於
+    Console.WriteLine($&quot;x == y =&gt;{x == y}&quot;); //等於
+    Console.WriteLine($&quot;x == y =&gt;{x != y}&quot;); //不等於
+    Console.WriteLine();
+    Console.WriteLine(&quot;x=1&quot;);
+    Console.WriteLine($&quot;x++ =&gt;{x++}&quot;); //++為遞增 --為遞減 放在值後後置遞行順序為先執行程式後遞增 
+    Console.WriteLine($&quot;x =&gt;{x}&quot;); //執行完上一行的程式後 x遞增
+    Console.WriteLine($&quot;++x =&gt;{++x}&quot;); //++放在值前面前置遞增，先進增才執行容
+    Console.WriteLine();
+    var a = true; var b = false;
+    Console.WriteLine(&quot;邏輯 條件&quot;);
+    Console.WriteLine(&quot; a = true b = false&quot;);
+    Console.WriteLine($&quot;!a =&gt; {!a}&quot;); //邏輯否定 傳回相反邏輯
+    Console.WriteLine($&quot;a &amp;&amp; b =&gt; {a &amp;&amp; b}&quot;); //條件式 AND
+    Console.WriteLine($&quot;a || b =&gt; {a || b}&quot;); //條件式 OR
+    Console.ReadLine();
+</code></pre>
+<h1 id="陳述式"><a href="#陳述式" class="headerlink" title="陳述式"></a>陳述式</h1><p>程式的動作是藉由陳述式來表達。 C# 支援數種不同類型的陳述式，其中一些是以內嵌陳述式來定義。</p>
+<p>「區塊」可允許在許可單一陳述式的內容中撰寫多個陳述式。 區塊是由在 { 與 } 分隔符號之間撰寫的陳述式清單所組成。</p>
+<p>當變數宣告在區塊內就是區域變數，在區塊外的無法存取到區塊內的區域變數</p>
+<pre><code class="cs">    var variable = &quot;Variable&quot;;
+
+    {
+        var localVariable = &quot;Local variable&quot;; //區域變數
+        Console.WriteLine(variable);
+        Console.WriteLine(localVariable);
+
+    Console.WriteLine(variable);
+    Console.WriteLine(localVariable); //此行無法編譯localVariable被宣告在上面的區塊中，只有在那個區塊中可以使用
+    Console.ReadLine();
+</code></pre>
+<h2 id="if-陳述式"><a href="#if-陳述式" class="headerlink" title="if 陳述式"></a>if 陳述式</h2><p>if 陳述式會根據運算式的 Boolean 值識別要執行的陳述式。</p>
+<pre><code class="cs">    var count = 0;
+
+    if (count == 0) //如果條件成立程式會進入下面區塊，並且跳過其他判斷條件
+    {
+        Console.WriteLine(&quot;count = 0&quot;);
+    }
+    else if (count == 1) //上述條件都不成立，到此判斷條件是否成立
+        Console.WriteLine(&quot;count = 1&quot;);
+    }
+    else //所有條件都不成立
+    {
+        Console.WriteLine(&quot;other&quot;);
+    }
+</code></pre>
+<h2 id="switch-陳述式"><a href="#switch-陳述式" class="headerlink" title="switch 陳述式"></a>switch 陳述式</h2><p>switch 是一個選取範圍陳述式，可根據使用「比對運算式」的模式比對，從候選項清單中選擇要執行的單一「參數區段」。</p>
+<p>在 C# 6 中，比對運算式必須是傳回下列類型之值的運算式︰</p>
+<ul>
+<li>char。</li>
+<li>string。</li>
+<li>bool。</li>
+<li>整數值，例如 int 或 long。</li>
+<li>enum 值。</li>
+</ul>
+<p>從 C# 7 開始，比對運算式可以是任何非 Null 運算式。</p>
+<h3 id="常數模式"><a href="#常數模式" class="headerlink" title="常數模式"></a>常數模式</h3><p>常數模式會測試比對運算式是否等於指定的常數。 </p>
+<pre><code class="cs">    switch (DateTime.Now.DayOfWeek) //switch放入變數作為判斷條件
+    {
+        case DayOfWeek.Sunday: //當DateTime.Now.DayOfWeek為星期天
+        case DayOfWeek.Saturday: //星期六，可將多個條件同時寫在一起
+            Console.WriteLine(&quot;The weekend&quot;);
+            break; //陳述式結束
+        case DayOfWeek.Monday:
+            Console.WriteLine(&quot;The first day of the work week.&quot;);
+            break;
+        case DayOfWeek.Friday:
+            Console.WriteLine(&quot;The last day of the work week.&quot;);
+            break;
+        default: //不在上面的條件中會執行此段，也可以省略不寫，基本上類if陳述式中的else區塊
+            Console.WriteLine(&quot;The middle of the work week.&quot;);
+            break;
+
+    Console.ReadLine();
+</code></pre>
+<h3 id="類型模式"><a href="#類型模式" class="headerlink" title="類型模式"></a>類型模式</h3><p>類型模式會啟用精簡類型評估和轉換。 與 switch 陳述式搭配使用來執行模式比對時，會測試運算式是否可轉換成指定的類型；如果可以的話，則會將它轉換成該類型的變數。</p>
+<pre><code class="cs">    static void Main(string[] args)
+    {
+        int[] values = { 2, 4, 6, 8, 10 };
+        ShowCollectionInformation(values);
+        var names = new List&lt;string&gt;();
+        names.AddRange(new string[] { &quot;Adam&quot;, &quot;Abigail&quot;, &quot;Bertrand&quot;,&quot;Bridgette&quot; });
+        ShowCollectionInformation(names);
+        List&lt;int&gt; numbers = null;
+        ShowCollectionInformation(numbers);
+        Console.ReadLine();
+    }
+    private static void ShowCollectionInformation(object coll)
+    {
+        switch (coll)
+        {
+            case Array arr: //判斷object是否為Array類型
+                Console.WriteLine($&quot;An array with {arr.Length}elements.&quot;);
+                break;
+            case IEnumerable&lt;int&gt; ieInt:
+                Console.WriteLine($&quot;Average: {ieInt.Average(s =&gt; s)}&quot;;
+                break;
+            case IList list:
+                Console.WriteLine($&quot;{list.Count} items&quot;);
+                break;
+            case IEnumerable ie:
+                string result = &quot;&quot;;
+                foreach (var item in ie)
+                    result += &quot;${e} &quot;;
+                Console.WriteLine(result);
+                break;
+            case null:
+                // Do nothing for a null.
+                break;
+            default:
+                Console.WriteLine($&quot;A instance of type {coll.GetType(.Name}&quot;);
+                break;
+        }
+    }
+</code></pre>
+<h2 id="while-陳述式"><a href="#while-陳述式" class="headerlink" title="while 陳述式"></a>while 陳述式</h2><p>while 陳述式會執行陳述式或陳述式區塊，直到指定的運算式評估為 false 為止。</p>
+<pre><code class="cs">    int n = 1;
+    while (n &lt; 6) //當條件不成立時才會離開while區塊，所以使用時要小心造成無限迴圈
+    {
+        Console.WriteLine(&quot;Current value of n is {0}&quot;, n);
+        n++; //當沒有此行程式碼時，會形成無限迴圈的情況，永遠重複此區塊程式碼
+    }
+    Console.ReadLine();
+</code></pre>
+<h2 id="do-陳述式"><a href="#do-陳述式" class="headerlink" title="do 陳述式"></a>do 陳述式</h2><p>類似while陳述式，但會先執行do區塊內的程式碼才進行while判斷</p>
+<pre><code class="cs">    int n = 10;
+    do //會先執行此區塊內容才進行下面while判斷
+    {
+        Console.WriteLine(n);
+    } while (n&lt;5);
+    Console.ReadLine();
+</code></pre>
+<h2 id="for-陳述式"><a href="#for-陳述式" class="headerlink" title="for 陳述式"></a>for 陳述式</h2><p>透過 for 迴圈，您可以重複執行陳述式或陳述式區塊，直到指定的運算式評估為 false 為止。 這種迴圈對於逐一查看陣列很有用，也適用於您事先知道迴圈要反覆運算幾次的其他應用。</p>
+<pre><code class="cs">    //for (initializer; condition; iterator) 
+    //for結構為 初始值;條件判斷;迭代器區段
+    int limit = 10;
+    for (int i = 0; i &lt; limit; i++)
+    {
+        Console.WriteLine(i);
+    }
+    Console.ReadLine();
+</code></pre>
+<h2 id="foreach-陳述式"><a href="#foreach-陳述式" class="headerlink" title="foreach 陳述式"></a>foreach 陳述式</h2><p>foreach 陳述式會為陣列或物件集合中每個實作 System.Collections.IEnumerable 或 System.Collections.Generic.IEnumerable<t> 介面的每個元素，重複一組內嵌陳述式。 foreach 陳述式可用來逐一查看集合，以取得所需的資訊，但不能用來新增或移除來源集合中的項目，以避免無法預期的副作用。</t></p>
+<pre><code class="cs">    var users = new List&lt;string&gt;() { &quot;A&quot;, &quot;B&quot;, &quot;C&quot; };
+    foreach (string s in users)
+    {
+        Console.WriteLine(s);
+    }
+    Console.ReadLine();
+</code></pre>
+<h2 id="break-陳述式"><a href="#break-陳述式" class="headerlink" title="break 陳述式"></a>break 陳述式</h2><p>break 陳述式會終止其所在的最接近封閉式迴圈或 switch 陳述式。</p>
+<pre><code class="cs">    while (true) 
+    {
+        Console.WriteLine(&quot;Test&quot;);
+        break; //執行到此行直接終止並且離開此區塊
+    }
+    Console.ReadLine();
+</code></pre>
+<h2 id="continue-陳述式"><a href="#continue-陳述式" class="headerlink" title="continue 陳述式"></a>continue 陳述式</h2><p>continue 陳述式會將控制權轉移給其所在的封閉式 while、do、for 或 foreach 陳述式的下一個反覆項目。</p>
+<pre><code class="cs">    for (int i = 1; i &lt;= 10; i++)
+    {
+        if (i &lt; 9)
+        {
+            continue; //執行到此終止並且進到下一此迴圈
+        }
+        Console.WriteLine(i);
+    }
+    Console.ReadLine();
+</code></pre>
+<h2 id="throw-陳述式和-try-陳述式"><a href="#throw-陳述式和-try-陳述式" class="headerlink" title="throw 陳述式和 try 陳述式"></a>throw 陳述式和 try 陳述式</h2><p>try-catch 陳述式包含 try 區塊後面接著一個或多個 catch 子句，指定不同例外狀況的處理常式。</p>
+<pre><code class="cs">    static void ProcessString(string s)
+    {
+        if (s == null)
+        {
+            throw new ArgumentNullException(); //拋出ArgumentNullException
+        }
+    }
+
+    static void Main()
+    {
+        try
+        {
+            string s = null;
+            ProcessString(s);
+        }
+        // Most specific:
+        catch (ArgumentNullException e) //擷取ArgumentNullException例外
+        {
+            Console.WriteLine(&quot;{0} First exception caught.&quot;, e);
+        }
+        // Least specific:
+        catch (Exception e) //擷取所有例外
+        {
+            Console.WriteLine(&quot;{0} Second exception caught.&quot;, e);
+        }
+        finally //try catch結束後會執行
+        {
+            //常見的搭配使用 catch 與 finally 是要取得和使用 try 區塊中的資源、處理 catch 區塊中的例外情況，以及釋放 finally 區塊中的資源。
+            //do something....
+        }
+    }
+</code></pre>
+<h2 id="using-陳述式"><a href="#using-陳述式" class="headerlink" title="using 陳述式"></a>using 陳述式</h2><p>提供方便的語法，以確保正確使用 IDisposable 物件。</p>
+<pre><code class="cs">    //using 結束後會釋放TextWriter資源
+    using (TextWriter w = File.CreateText(&quot;test.txt&quot;))
+    {
+        w.WriteLine(&quot;Line one&quot;);
+        w.WriteLine(&quot;Line two&quot;);
+        w.WriteLine(&quot;Line three&quot;);
+    }
+</code></pre>
+<h2 id="goto-陳述式"><a href="#goto-陳述式" class="headerlink" title="goto 陳述式"></a>goto 陳述式</h2><p>goto 陳述式會將程式控制權直接轉移到標記陳述式。</p>
+<p>goto 的一個常見用法是將控制權轉移到特定的切換案例標籤，或 switch 陳述式中的預設標籤。</p>
+<p>goto 陳述式也適用於跳出深度巢狀的迴圈。</p>
+<pre><code class="cs">    int i = 0;
+    goto check;
+    loop:
+    Console.WriteLine(args[i++]);
+    check:
+    if (i &lt; args.Length) 
+        goto loop;
+</code></pre>
+<p>以下功用較複雜，先跳過</p>
+<h2 id="return-陳述式"><a href="#return-陳述式" class="headerlink" title="return 陳述式"></a>return 陳述式</h2><h2 id="yield-陳述式"><a href="#yield-陳述式" class="headerlink" title="yield 陳述式"></a>yield 陳述式</h2><h2 id="checked-和-unchecked-陳述式"><a href="#checked-和-unchecked-陳述式" class="headerlink" title="checked 和 unchecked 陳述式"></a>checked 和 unchecked 陳述式</h2><h2 id="lock-陳述式"><a href="#lock-陳述式" class="headerlink" title="lock 陳述式"></a>lock 陳述式</h2><h1 id="相關文章"><a href="#相關文章" class="headerlink" title="相關文章"></a>相關文章</h1><a href="/2018/04/25/Csharp初階教學2/" title="C#初階教學2">C#初階教學2</a>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C#</a>
+          
+            <a href="/tags/NET/" rel="tag"># .NET</a>
+          
+            <a href="/tags/新手教學/" rel="tag"># 新手教學</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/20/Markdown教學/" rel="prev" title="Markdown教學">
+                Markdown教學 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XDM</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-簡介"><span class="nav-number">1.</span> <span class="nav-text">C#簡介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#準備開發環境"><span class="nav-number">2.</span> <span class="nav-text">準備開發環境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安裝Visual-Studio"><span class="nav-number">2.1.</span> <span class="nav-text">安裝Visual Studio</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#開啟你的第一個專案-Hello-World"><span class="nav-number">2.2.</span> <span class="nav-text">開啟你的第一個專案 Hello World</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程式結構"><span class="nav-number">3.</span> <span class="nav-text">程式結構</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#類型與變數"><span class="nav-number">4.</span> <span class="nav-text">類型與變數</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#運算式"><span class="nav-number">5.</span> <span class="nav-text">運算式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#陳述式"><span class="nav-number">6.</span> <span class="nav-text">陳述式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#if-陳述式"><span class="nav-number">6.1.</span> <span class="nav-text">if 陳述式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#switch-陳述式"><span class="nav-number">6.2.</span> <span class="nav-text">switch 陳述式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常數模式"><span class="nav-number">6.2.1.</span> <span class="nav-text">常數模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#類型模式"><span class="nav-number">6.2.2.</span> <span class="nav-text">類型模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#while-陳述式"><span class="nav-number">6.3.</span> <span class="nav-text">while 陳述式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#do-陳述式"><span class="nav-number">6.4.</span> <span class="nav-text">do 陳述式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for-陳述式"><span class="nav-number">6.5.</span> <span class="nav-text">for 陳述式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#foreach-陳述式"><span class="nav-number">6.6.</span> <span class="nav-text">foreach 陳述式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#break-陳述式"><span class="nav-number">6.7.</span> <span class="nav-text">break 陳述式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#continue-陳述式"><span class="nav-number">6.8.</span> <span class="nav-text">continue 陳述式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#throw-陳述式和-try-陳述式"><span class="nav-number">6.9.</span> <span class="nav-text">throw 陳述式和 try 陳述式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#using-陳述式"><span class="nav-number">6.10.</span> <span class="nav-text">using 陳述式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#goto-陳述式"><span class="nav-number">6.11.</span> <span class="nav-text">goto 陳述式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#return-陳述式"><span class="nav-number">6.12.</span> <span class="nav-text">return 陳述式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yield-陳述式"><span class="nav-number">6.13.</span> <span class="nav-text">yield 陳述式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#checked-和-unchecked-陳述式"><span class="nav-number">6.14.</span> <span class="nav-text">checked 和 unchecked 陳述式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lock-陳述式"><span class="nav-number">6.15.</span> <span class="nav-text">lock 陳述式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相關文章"><span class="nav-number">7.</span> <span class="nav-text">相關文章</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XDM</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+<script type="text/javascript">
+  $(function() {
+    hljs.initHighlighting();
+    $('pre code').each(function() {
+      var lines = $(this).text().split('\n').length - 1;
+      var $numbering = $('<ul/>').addClass('pre-numbering');
+      $(this)
+        .addClass('has-numbering')
+        .parent()
+        .append($numbering);
+      for (i = 1; i <= lines; i++) {
+        $numbering.append($('<li/>'));
+      }
+    });
+  });
+
+</script>
+</html>

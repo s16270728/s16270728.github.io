@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-TW">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="新手教學,WinForms," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="這篇教學從建立Windows Froms開始到建立一些控制項設定屬性等的基礎教學">
+<meta name="keywords" content="新手教學,WinForms">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows Forms開發初階教學">
+<meta property="og:url" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/index.html">
+<meta property="og:site_name" content="XDM KM">
+<meta property="og:description" content="這篇教學從建立Windows Froms開始到建立一些控制項設定屬性等的基礎教學">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/Start1.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/Start2.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/Start3.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/Start4.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/Form1.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/Form2.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/Form3.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/Form4.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/Form5.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/Control1.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/Partice1.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/Partice2.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/Partice3.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/Partice4.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/Partice5.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/Partice6.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/Partice7.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/Partice8.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/oracle1.png">
+<meta property="og:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/oracle2.png">
+<meta property="og:updated_time" content="2018-04-30T09:48:56.180Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Windows Forms開發初階教學">
+<meta name="twitter:description" content="這篇教學從建立Windows Froms開始到建立一些控制項設定屬性等的基礎教學">
+<meta name="twitter:image" content="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/Start1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/"/>
+
+
+
+
+
+  <title>Windows Forms開發初階教學 | XDM KM</title>
+  
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="/js/src/highlightJs/styles/vs2015.css">
+  <script type="text/javascript" src="/js/src/highlightJs/highlight.pack.js"></script>
+</head>
+<style>
+  pre {
+    position: relative;
+    padding: 0;
+  }
+
+  code.has-numbering {
+    margin-left: 2.5rem;
+  }
+
+  code.has-numbering::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pre-numbering {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .pre-numbering li {
+    list-style-type: decimal-leading-zero !important;
+  }
+
+  @media (max-width: 760px) {
+    .post-body pre {
+      padding: 0px;
+    }
+
+    .post-body .pre-numbering {
+      display: none;
+    }
+
+    code.has-numbering {
+      margin: 0;
+    }
+  }
+
+</style>
+<style>
+blockquote {
+  color: #888;
+  background-color: #eae6f3;
+  border-left: 1rem solid #5236a0;
+  padding: 0 1.5rem;
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+}
+
+blockquote:before,
+blockquote:after {
+  color: #392570;
+  font-size: 2.5rem;
+  position: absolute;
+  line-height: 2.5rem;
+}
+
+blockquote:before {
+  content: "\201C";
+  left: -1rem;
+  top: 0;
+}
+
+blockquote:after {
+  content: "\201D";
+  right: 0;
+  bottom: -1rem;
+}
+</style>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-TW">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XDM KM</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.xdmtech.com/2018/04/26/WindowsForms開發初階教學/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XDM">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XDM KM">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Windows Forms開發初階教學</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-26T15:04:54+08:00">
+                2018-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程式開發教學/" itemprop="url" rel="index">
+                    <span itemprop="name">程式開發教學</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程式開發教學/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C#</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>這篇教學從建立Windows Froms開始到建立一些控制項設定屬性等的基礎教學</p>
+<a id="more"></a>
+<h1 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h1><p>Windows Forms是微軟的.NET開發框架的圖形用戶介面的一部分</p>
+<p>使用 Windows Form 來開發智慧型用戶端。 「智慧型用戶端」是豐富的圖形化應用程式，容易部署及更新，無論是否連接至網際網路都能運作，而且在存取本機電腦上的資源時，所使用的方法比傳統的 Windows 應用程式更安全。</p>
+<p>微軟在.Net 3.0中發行了支援影片加速的Windows Presentation Foundation（簡稱WPF）作為Windows Forms的替代版本，但是WPF並不能完全取代Windows Forms，很多時候仍需要和Windows Forms互操作。</p>
+<h1 id="建立Windows-Forms應用程式"><a href="#建立Windows-Forms應用程式" class="headerlink" title="建立Windows Forms應用程式"></a>建立Windows Forms應用程式</h1><p>在功能表列上，選擇 [檔案] 、[新增] 、[專案] 。 對話方塊看起來會像這樣。</p>
+<p><img src="Start1.png" alt="新增專案"></p>
+<p>建立完之後VS視窗大概會有這樣的配置</p>
+<p>主要有主視窗、方案總管和 [屬性] 視窗。</p>
+<ul>
+<li><p>主視窗：您將在這個視窗中進行大部分的工作，例如，使用表單和編輯程式碼。 在圖中，視窗在 [表單編輯器] 中顯示表單。 視窗頂端會出現 [起始頁] 索引標籤和 [Form1.cs [Design]] 索引標籤 (在 Visual Basic 中，索引標籤名稱的結尾是 .vb，而不是 .cs)。</p>
+</li>
+<li><p>方案總管視窗：在這個視窗中，您可以檢視和巡覽至方案中的所有項目。 如果您選擇一個檔案，[屬性] 視窗的內容會隨著變更。 如果您開啟程式碼檔 (在 Visual C# 中結尾 .cs，在 Visual Basic 中則是 .vb)，程式碼檔或程式碼檔的設計工具隨即出現。 設計工具是一個視覺化介面，您可以將控制項 (例如按鈕和清單) 加入該介面中。 Visual Studio 表單的設計工具稱為 Windows Form 設計工具。</p>
+</li>
+<li><p>屬性視窗：在這個視窗中，您可以變更在其他視窗中所選擇項目的屬性。 例如，如果您選擇 Form1，可以設定 Text 屬性變更其標題，也可以設定 Backcolor 屬性變更背景色彩。</p>
+</li>
+</ul>
+<p><img src="Start2.png" alt="IDE"></p>
+<p>接著執行你的程式，有以下幾種方法</p>
+<ul>
+<li><p>選擇 F5 鍵。</p>
+</li>
+<li><p>在功能表列上，選擇 [偵錯]、[開始偵錯]。</p>
+</li>
+<li><p>在工具列上選擇 [開始偵錯] 按鈕。</p>
+</li>
+</ul>
+<p>執行成功後應該就會看到一個空白的視窗程式</p>
+<p><img src="Start3.png" alt="空白視窗"></p>
+<p>使用下列其中一種方法停止您的程式。</p>
+<ul>
+<li><p>在工具列上選擇 [停止偵錯] 按鈕。</p>
+</li>
+<li><p>在功能表列上，選擇 [偵錯]、[停止偵錯]。</p>
+</li>
+<li><p>選擇 [Form1] 視窗右上角的 X 按鈕。</p>
+</li>
+</ul>
+<p><img src="Start4.png" alt="Stop"></p>
+<h1 id="開發環境架構介紹"><a href="#開發環境架構介紹" class="headerlink" title="開發環境架構介紹"></a>開發環境架構介紹</h1><p>首先從你的設計畫面中點選Form，然後在右邊找到你的屬性視窗看起來應該如下圖</p>
+<p>選取之後，在 [屬性] 視窗中尋找 [Text] 屬性 打上名稱，你的Form名稱就會改變</p>
+<p>當拖曳Form邊邊角角的小方塊時可以調整大小，此時在屬性視窗的Size也會跟著改變，也可以直接在Size屬性直接填寫寬度高度</p>
+<p>所以各個控制項基本上透過2個方法來設定</p>
+<ol>
+<li><p>透過IDE的設計畫面或屬性視窗直接做設定</p>
+</li>
+<li><p>在.cs檔透過程式碼來改變設定</p>
+</li>
+</ol>
+<p><img src="Form1.png" alt="Form"></p>
+<p>在方案總管可以看到目前我們的架構很簡單只有一個Form1跟Program.cs和App.config</p>
+<ul>
+<li>Form1 : Form元件，可以自行產生多個自訂的Form來交互使用</li>
+<li>Program.cs : 程式的進入點</li>
+<li>App.config : 程式的設定檔</li>
+</ul>
+<p>一個Form包含兩個檔案<strong>.cs</strong>以及<strong>.Designer.cs</strong>，前者為程式邏輯撰寫的地方，後者為UI設計的程式碼</p>
+<p><img src="Form2.png" alt="Form"></p>
+<p><img src="Form3.png" alt="Form"></p>
+<p><img src="Form4.png" alt="Form"></p>
+<p><img src="Form5.png" alt="Form"></p>
+<p>VS對於Winform開發提供了視覺化設計介面讓開發者可以直接對畫面做調整，不需要全部透過程式碼來實現。</p>
+<p>VS左側可以找到工具箱，裡面提供許多.NET平台配件的UI控制項，也可以自行開發在工具箱引入讓其他開發人員使用。</p>
+<p><img src="Control1.png" alt="Control"></p>
+<h1 id="開發練習"><a href="#開發練習" class="headerlink" title="開發練習"></a>開發練習</h1><p>現在簡單的做個練習，做一個小程式裡面有輸入框以及按鈕，讓使用者輸入文字然後產生在下面訊息視窗</p>
+<h2 id="建立表單Layout"><a href="#建立表單Layout" class="headerlink" title="建立表單Layout"></a>建立表單Layout</h2><p>首先從工具箱中找到TableLayoutPanel，拖曳到Form裡面，這是一個網格類型的排版控制項，可以幫助我們配置Form的版面</p>
+<p><img src="Partice1.png" alt="Partice"></p>
+<p>接著我們將TableLayoutPanel的Dock屬性設為Fill，讓他的大小跟隨著父容器縮放。</p>
+<p>我們只需要兩列的配置，所以接下來將TableLayoutPanel的兩行兩列改為一行兩列</p>
+<p>點選TableLayoutPanel然後控制項右上角會浮現一個小三角形符號，點選可以出現控制項的設置，這裡點擊編輯資料列與資料行，參考下方設定。</p>
+<ol>
+<li><p>將Column刪掉一個，並將剩餘的一個大小設為100%</p>
+</li>
+<li><p>將第一個Row大小改為絕對並設為50px，第二個Row設為100%</p>
+</li>
+</ol>
+<p><img src="Partice2.png" alt="Partice"></p>
+<p><img src="Partice3.png" alt="Partice"></p>
+<h2 id="加入控制項"><a href="#加入控制項" class="headerlink" title="加入控制項"></a>加入控制項</h2><p>TableLayoutPanel裡面一個空間只能容許放入一個控制項，所以需要加入Panel讓我們可以放多個控制項在裡面</p>
+<p>控制項的關係就會變成TableLayoutPanel=&gt; Panel =&gt; Controls</p>
+<ol>
+<li>將Panel加入到第一個Row</li>
+<li>將Panel的Dock設為Fill</li>
+</ol>
+<p><img src="Partice4.png" alt="Partice"></p>
+<p>在來我們需要一個輸入框以及按鈕</p>
+<ol>
+<li>將TextBox加入Panel</li>
+<li>將Button加入Panel</li>
+<li>直接在設計畫面中調整大小以及為置</li>
+</ol>
+<p><img src="Partice5.png" alt="Partice"></p>
+<p>接著我們對這兩個控制項做一些設定</p>
+<ol>
+<li>TextBox的(Name)取為inputTextBox</li>
+<li>TextBox的Anchor設為 Top, Left, Right</li>
+<li>Button的(Name)取為sendMessageButton</li>
+<li>Button的Text設為送出</li>
+<li>Button的Anchor設為 Right</li>
+</ol>
+<p>最後我們在加入一個新的TextBox到第二條Row，一樣做一些設定</p>
+<ol>
+<li>(Name)取為messageTextBox</li>
+<li>Multiline設為True (讓textbox可以輸入多行文字)</li>
+<li>Dock設為Fill</li>
+<li>ReadOnly設為True (讓textbox只能看不能編輯)</li>
+</ol>
+<p>最後執行你的程式，外觀應該會大約是這個樣子</p>
+<p><img src="Partice6.png" alt="Partice"></p>
+<h2 id="程式邏輯以及事件"><a href="#程式邏輯以及事件" class="headerlink" title="程式邏輯以及事件"></a>程式邏輯以及事件</h2><p>接下來我們就要在Form中加入一些程式碼以及事件</p>
+<p>首先我們要為送出的按鈕加入點擊的事件，讓送出按鈕被點擊時可以觸發我們的程式碼</p>
+<p>控制項基本上都會附有許多的event，讓使用者在程式互動時可以傳出event，而開發者就可以程式碼寫在event裡，控制被觸發時要執行甚麼動作</p>
+<p>有兩種方法可以讓程式碼自動產生Button的點擊事件</p>
+<ol>
+<li>在設計畫面直接雙擊Button，就會自動預設產生Click事件</li>
+<li>點擊Button在屬性視窗裡點事件分頁的選項找到Click事件在右邊空白的設定雙擊</li>
+</ol>
+<p>事件分頁裡的事件設定可以選擇程式碼中已經寫好的方法，或著雙擊由系統自動產生</p>
+<p><img src="Partice7.png" alt="Partice"></p>
+<p>產生事件後你應該會看到Form1.cs中自動加入了下列程式碼</p>
+<p>方法中的sender 和 e 參數為事件回傳參數，由事件發起者傳入</p>
+<pre><code class="cs">    private void sendMessageButton_Click(object sender, EventArgs e)
+    {
+
+    }
+</code></pre>
+<p>可以在Click的方法中加入 <code>MessageBox.Show(&quot;Botton is clicked&quot;);</code> 執行程式然後點擊送出按鈕來測試一下是否有成功的觸發事件</p>
+<p>以上簡單的操作就可以快速產生一個送出按鈕被點擊的事件</p>
+<pre><code class="cs">    private void sendMessageButton_Click(object sender, EventArgs e)
+    {
+        //取得輸入的文字
+        var input = this.inputTextBox.Text;
+        if (string.IsNullOrWhiteSpace(input)) //如果沒輸入名字出現提示訊息
+        {
+            MessageBox.Show(&quot;Input is null!&quot;);
+        }
+        else //有輸入將訊息傳至messageTextBox
+        {
+            this.messageTextBox.Text += $&quot;{DateTime.Now:yyyy/MM/dd HH:mm:ss} : {input} {Environment.NewLine}&quot;;
+        }
+    }
+</code></pre>
+<p>程式執行結果</p>
+<p>當在文字輸入框輸入文字後點送出按鈕會將輸入內容加至下方訊息框</p>
+<p><img src="Partice8.png" alt="Partice"></p>
+<h1 id="Oracle-資料庫連線"><a href="#Oracle-資料庫連線" class="headerlink" title="Oracle 資料庫連線"></a>Oracle 資料庫連線</h1><p>現在示範如何跟Oracle資料庫連線，以往.NET平台與Oracle的連線設定常常會遇到一些相容問題，就是大家常用的Oracle.DataAccess(ODP.NET)。</p>
+<p>Oracle近年有提供新的連線工具 Managed ODP.NET，讓.Net平台輕鬆可以與Oracle連線，不用安裝Oracle Client，還可以使用Entity。</p>
+<p>================</p>
+<p>第一步我們要在專案中加入Oracle.ManagedDataAccess，首先在方案總管的專案上按右鍵選擇<strong>管理Nuget套件</strong></p>
+<p><img src="oracle1.png" alt="Oracle"></p>
+<p>接著切到瀏覽畫面然後在搜尋列輸入oracle找到Oracle.ManagedDataAccess選擇安裝，此時就完成加入專案</p>
+<p><img src="oracle2.png" alt="Oracle"></p>
+<p>接著參考下列與法與資料庫連線取得資料</p>
+<pre><code class="cs">        //連線字串，主要修改幾個地方 HOST=你的資料庫IP PORT=你的資料庫TCP通道 然後填入SID USER ID PASSWORD
+        string connectionString = &quot;DATA SOURCE=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.1.13)(PORT=1521)))(CONNECT_DATA=(SID = yms)))PERSIST SECURITY INFO=True;USER ID=yms;PASSWORD=admin;&quot;;
+        //:GROUPNAME 代表參數從Parameters傳入，參數名稱GROUPNAME，這種作法可防止SQL Injection(資料隱碼攻擊)
+        string sqlCommand = &quot;SELECT GROUP_NAME,SRC_TABLE_NAME,TRG_TABLE_NAME FROM XDM_TABLE_REP_CFG &quot; +
+            &quot;WHERE GROUP_NAME=:GROUPNAME&quot;; 
+        //建立連線
+        using (OracleConnection conn = new OracleConnection(connectionString))
+        {
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            //建立SQL Command
+            OracleCommand cmd = new OracleCommand(sqlCommand, conn);
+            //BindByName預設為false，SQL會依照順序代入參數
+            //若設為true時，則依參數名稱代入參數
+            cmd.BindByName = true;
+            //加入參數
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add(&quot;GROUPNAME&quot;, &quot;ARYODS&quot;);
+            //執行Select Command
+            OracleDataAdapter DataAdapter = new OracleDataAdapter();
+            DataAdapter.SelectCommand = cmd;
+            //將資料存入DataTable
+            DataTable dt = new DataTable();
+            DataAdapter.Fill(dt);
+        }
+</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/新手教學/" rel="tag"># 新手教學</a>
+          
+            <a href="/tags/WinForms/" rel="tag"># WinForms</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/26/SQL初階教學2/" rel="next" title="SQL初階教學2">
+                <i class="fa fa-chevron-left"></i> SQL初階教學2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/30/KM寫作教學/" rel="prev" title="KM寫作教學">
+                KM寫作教學 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XDM</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#簡介"><span class="nav-number">1.</span> <span class="nav-text">簡介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#建立Windows-Forms應用程式"><span class="nav-number">2.</span> <span class="nav-text">建立Windows Forms應用程式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#開發環境架構介紹"><span class="nav-number">3.</span> <span class="nav-text">開發環境架構介紹</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#開發練習"><span class="nav-number">4.</span> <span class="nav-text">開發練習</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#建立表單Layout"><span class="nav-number">4.1.</span> <span class="nav-text">建立表單Layout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加入控制項"><span class="nav-number">4.2.</span> <span class="nav-text">加入控制項</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程式邏輯以及事件"><span class="nav-number">4.3.</span> <span class="nav-text">程式邏輯以及事件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Oracle-資料庫連線"><span class="nav-number">5.</span> <span class="nav-text">Oracle 資料庫連線</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XDM</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+<script type="text/javascript">
+  $(function() {
+    hljs.initHighlighting();
+    $('pre code').each(function() {
+      var lines = $(this).text().split('\n').length - 1;
+      var $numbering = $('<ul/>').addClass('pre-numbering');
+      $(this)
+        .addClass('has-numbering')
+        .parent()
+        .append($numbering);
+      for (i = 1; i <= lines; i++) {
+        $numbering.append($('<li/>'));
+      }
+    });
+  });
+
+</script>
+</html>
